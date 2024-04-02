@@ -31,6 +31,12 @@
       }
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Abhishekkumar2021/code-to-snippet.git"
+  },
+  "license": "MIT",
+  "publisher": "Abhishek Kumar IITG",
   "scripts": {
     "vscode:prepublish": "yarn run package",
     "compile": "webpack",
