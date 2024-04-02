@@ -10,7 +10,6 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": ["onLanguage:*"],
   "main": "./dist/extension.js",
   "contributes": {
     "menus": {
@@ -36,7 +35,7 @@
     "url": "https://github.com/Abhishekkumar2021/code-to-snippet.git"
   },
   "license": "MIT",
-  "publisher": "Abhishek Kumar IITG",
+  "publisher": "AbhishekKumarIITG",
   "scripts": {
     "vscode:prepublish": "yarn run package",
     "compile": "webpack",
