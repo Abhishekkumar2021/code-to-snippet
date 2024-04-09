@@ -33,6 +33,10 @@ Initial release of the **Code to Snippet** extension.
 
 Now the extension will automatically save the snippet to the workspace folder and copy the snippet to the clipboard.
 
+### 1.1.1
+
+Fixed a bug where the extension is not able to save the snippet to the workspace folder.
+
 ## Usage
 
 1. Select the code you want to convert into a snippet.

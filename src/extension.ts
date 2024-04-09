@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import path from 'path';
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
@@ -58,7 +59,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 				// Check if .vscode folder exists in the workspace
 				const workspaceFolders = vscode.workspace.workspaceFolders;
-				if (!workspaceFolders) {
+				if (!workspaceFolders || workspaceFolders.length === 0) {
 					// Show output in the ouput channel & provide language id as json
 					const outputChannel = vscode.window.createOutputChannel('Code to Snippet', 'json');
 					outputChannel.appendLine(finalSnippet);
@@ -72,7 +73,8 @@ export function activate(context: vscode.ExtensionContext) {
 				const snippetsPath = `${vscodePath}/snippets.code-snippets`;
 
 				// Create .vscode folder if it doesn't exist
-				if(!await vscode.workspace.fs.stat(vscode.Uri.file(vscodePath))) {
+				const vscodeFolderExists = await vscode.workspace.fs.stat(vscode.Uri.file(vscodePath)).then(() => true, () => false);
+				if(!vscodeFolderExists) {
 					try {
 						await vscode.workspace.fs.createDirectory(vscode.Uri.file(vscodePath));
 					} catch (error) {
@@ -82,7 +84,8 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 
 				// Create snippets.vscode-snippets file if it doesn't exist and put {} in it
-				if(!await vscode.workspace.fs.stat(vscode.Uri.file(snippetsPath))) {
+				const snippetsFileExists = await vscode.workspace.fs.stat(vscode.Uri.file(snippetsPath)).then(() => true, () => false);
+				if(!snippetsFileExists) {
 					try {
 						await vscode.workspace.fs.writeFile(vscode.Uri.file(snippetsPath), Buffer.from('{}'));
 					} catch (error) {

@@ -2,7 +2,7 @@
   "name": "code-to-snippet",
   "displayName": "Code to Snippet",
   "description": "A simple extension to convert selected code into snippets for saving",
-  "version": "0.0.1",
+  "version": "1.1.1",
   "engines": {
     "vscode": "^1.87.0"
   },
